@@ -1,5 +1,6 @@
 # Couture, Before It Has a Name  
 *vibecoding project*
+
 This repository contains the vibecoding implementation for an avant-garde couture ecommerce experience.
 
 The goal is not to explain a brand, a technology, or a process.  
