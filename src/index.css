@@ -2,95 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Core Palette - Charcoal & Bone */
+    --background: 0 0% 4%;
+    --foreground: 40 20% 95%;
+    
+    /* Surface variations */
+    --card: 0 0% 6%;
+    --card-foreground: 40 20% 95%;
+    
+    --popover: 0 0% 6%;
+    --popover-foreground: 40 20% 95%;
+    
+    /* Primary - Bone/Ivory */
+    --primary: 40 20% 95%;
+    --primary-foreground: 0 0% 4%;
+    
+    /* Secondary - Muted charcoal */
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 40 15% 75%;
+    
+    /* Muted - For receding elements */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 45%;
+    
+    /* Accent - Silver */
+    --accent: 0 0% 68%;
+    --accent-foreground: 0 0% 4%;
+    
+    /* Gold accent - used sparingly */
+    --gold: 45 30% 55%;
+    --gold-foreground: 0 0% 4%;
+    
+    /* Functional */
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 40 20% 95%;
+    
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 40 20% 95%;
+    
+    --radius: 0;
+    
+    /* Sidebar - keeping for compatibility */
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 40 20% 95%;
+    --sidebar-primary: 40 20% 95%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 40 20% 95%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 40 20% 95%;
   }
 }
 
@@ -98,8 +63,176 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+  
+  /* Editorial Serif */
+  .font-editorial {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+  
+  .font-editorial-medium {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  
+  /* Selection */
+  ::selection {
+    background: hsl(var(--primary) / 0.15);
+    color: hsl(var(--foreground));
   }
 }
+
+@layer components {
+  /* Navigation link */
+  .nav-link {
+    @apply text-muted-foreground transition-colors duration-500 ease-in-out;
+    letter-spacing: 0.15em;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+  }
+  
+  .nav-link:hover {
+    @apply text-foreground;
+  }
+  
+  /* Ceremonial button */
+  .btn-ceremonial {
+    @apply inline-block border border-foreground/20 px-8 py-4 text-foreground/80;
+    @apply transition-all duration-700 ease-in-out;
+    letter-spacing: 0.2em;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+  }
+  
+  .btn-ceremonial:hover {
+    @apply border-foreground/50 text-foreground bg-foreground/5;
+  }
+  
+  /* Minimal link */
+  .link-minimal {
+    @apply text-muted-foreground transition-colors duration-500 ease-in-out;
+    letter-spacing: 0.1em;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+  }
+  
+  .link-minimal:hover {
+    @apply text-foreground;
+  }
+  
+  /* Fragment text */
+  .text-fragment {
+    @apply font-editorial text-foreground/70 leading-relaxed;
+  }
+  
+  /* Edition badge */
+  .edition-badge {
+    @apply text-accent/60;
+    letter-spacing: 0.15em;
+    font-size: 0.55rem;
+    text-transform: uppercase;
+  }
+}
+
+@layer utilities {
+  /* Fabric-like motion */
+  .transition-fabric {
+    transition: all 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-fabric-slow {
+    transition: all 1200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-emergence {
+    transition: opacity 1000ms cubic-bezier(0.4, 0, 0.2, 1),
+                transform 1200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Recede effect for non-focused items */
+  .recede {
+    @apply opacity-40 scale-[0.98];
+    filter: blur(1px);
+  }
+  
+  /* Focus sharpening */
+  .sharpen {
+    @apply opacity-100 scale-100;
+    filter: blur(0);
+  }
+}
+
+/* Keyframe animations */
+@keyframes emerge-from-dark {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-delayed {
+  0%, 40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes subtle-drift {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-emerge {
+  animation: emerge-from-dark 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-fade-delayed {
+  animation: fade-in-delayed 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-drift {
+  animation: subtle-drift 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Animation delays */
+.delay-300 { animation-delay: 300ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-1000 { animation-delay: 1000ms; }
+.delay-1500 { animation-delay: 1500ms; }
+.delay-2000 { animation-delay: 2000ms; }
